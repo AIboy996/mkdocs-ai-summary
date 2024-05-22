@@ -1,0 +1,21 @@
+site_name: mkdocs-ai-summary
+theme:
+  name: material
+
+plugins:
+  - ai-summary:
+      api: "tongyi"
+      ignore_code: true
+      cache: true
+      cache_dir: "./"
+      prompt: "请帮我把下面的内容总结为200字以内的摘要："
+  - tags
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true 
+extra_css:
+  - ai-summary.css

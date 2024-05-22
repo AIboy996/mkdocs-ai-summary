@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mkdocs-ai-summary"
+version = "0.1.0"
+requires-python = ">=3.10"
+authors = [
+  { name="Yang Zhang", email="mail@yangzhang.site" },
+]
+description = "A mkdocs plugin to generage summary with the help of AI."
+readme = "../readme.md"
+license = {file = "../LICENSE"}
+keywords = ["mkdocs", "AI", "blog"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.optional-dependencies]
+tongyi = ["dashscope"]
+
+[project.urls]
+Homepage = "https://github.com/AIboy996/mkdocs-ai-summary"
