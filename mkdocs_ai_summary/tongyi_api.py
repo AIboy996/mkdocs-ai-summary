@@ -40,6 +40,7 @@ def ask(prompt):
 
 
 def get_summary_tongyi(page, prompt, markdown, cache=True, cache_dir="./"):
+    question = (prompt + markdown)[: MAX_LENGTH - 10]
     if cache:
         content_md5 = md5(markdown.encode("utf-8")).hexdigest()
         cache_file = f"{cache_dir}_ai_summary_cache.json"
@@ -55,15 +56,15 @@ def get_summary_tongyi(page, prompt, markdown, cache=True, cache_dir="./"):
                 ai_summary = cache_dict[page]["ai_summary"]
             # asked before, but content changed
             else:
-                ai_summary = ask(prompt + markdown)
+                ai_summary = ask(question)
         # do not aksed before
         else:
-            ai_summary = ask(prompt + markdown)
+            ai_summary = ask(question)
             cache_dict[page] = {"content_md5": content_md5, "ai_summary": ai_summary}
             with open(f"{cache_dir}/_ai_summary_cache.json", "w+") as f:
                 cache_dict = json.dump(cache_dict, f)
     else:
-        ai_summary = ask(prompt + markdown)
+        ai_summary = ask(question)
     return f"""!!! ai-summary "AI摘要 powered by [通义千问](https://tongyi.aliyun.com/)"
     {ai_summary}
 """
