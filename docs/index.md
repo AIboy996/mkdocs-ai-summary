@@ -4,6 +4,10 @@ include:
 ---
 # mkdocs-ai-summary
 
+[![PyPI - Version](https://img.shields.io/pypi/v/mkdocs-ai-summary)](https://pypi.org/project/mkdocs-ai-summary/)
+![PyPI - Implementation](https://img.shields.io/pypi/implementation/mkdocs-ai-summary)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mkdocs-ai-summary)
+
 Generage an **ai-summary** for the page:
 ![](assets/2024-05-22-22-00-32.png)
 
@@ -18,7 +22,7 @@ pip install mkdocs-ai-summary[tongyi]
 
 > Only support [tongyi ai](https://tongyi.aliyun.com/) for now. **Soon to support ChatGPT.**
 
-And you should include the [ai-summary.css](./docs/ai-summary.css)(optional, this is for the **custom admonition style**) in the config file as below:
+And you should include the [ai-summary.css](./ai-summary.css)(optional, this is for the **custom admonition style**) in the config file as below:
 
 ## Configuration
 
