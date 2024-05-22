@@ -4,6 +4,7 @@ import random
 from hashlib import md5
 from http import HTTPStatus
 from dashscope import Generation
+import logging
 
 MAX_LENGTH = 6000
 
@@ -39,7 +40,9 @@ def ask(prompt):
         )
 
 
-def get_summary_tongyi(page, prompt, markdown, cache=True, cache_dir="./"):
+def get_summary_tongyi(
+    page, prompt, markdown, cache=True, cache_dir="./", logger=logging.Logger("")
+):
     question = (prompt + markdown)[: MAX_LENGTH - 10]
     if cache:
         content_md5 = md5(markdown.encode("utf-8")).hexdigest()
@@ -54,6 +57,7 @@ def get_summary_tongyi(page, prompt, markdown, cache=True, cache_dir="./"):
         if page in cache_dict:
             if content_md5 == cache_dict[page]["content_md5"]:
                 ai_summary = cache_dict[page]["ai_summary"]
+                logger.info("Using cache.")
             # asked before, but content changed
             else:
                 ai_summary = ask(question)
@@ -68,4 +72,3 @@ def get_summary_tongyi(page, prompt, markdown, cache=True, cache_dir="./"):
     return f"""!!! tongyiai-summary "AI Summary powered by [通义千问](https://tongyi.aliyun.com/)"
     {ai_summary}
 """
-

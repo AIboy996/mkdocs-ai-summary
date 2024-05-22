@@ -1,5 +1,6 @@
 import os
 import json
+import logging
 from hashlib import md5
 from openai import OpenAI
 
@@ -21,7 +22,13 @@ def ask(prompt, model="gpt-3.5-turbo"):
 
 
 def get_summary_chatgpt(
-    page, prompt, markdown, cache=True, cache_dir="./", model="gpt-3.5-turbo"
+    page,
+    prompt,
+    markdown,
+    cache=True,
+    cache_dir="./",
+    model="gpt-3.5-turbo",
+    logger=logging.Logger(""),
 ):
     question = prompt + markdown
     if cache:
@@ -37,6 +44,7 @@ def get_summary_chatgpt(
         if page in cache_dict:
             if content_md5 == cache_dict[page]["content_md5"]:
                 ai_summary = cache_dict[page]["ai_summary"]
+                logger.info("Using cache.")
             # asked before, but content changed
             else:
                 ai_summary = ask(question, model=model)

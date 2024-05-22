@@ -59,6 +59,7 @@ class AiSummaryPlugin(BasePlugin):
                         markdown=markdown_to_summary,
                         cache=self.config["cache"],
                         cache_dir=self.config["cache_dir"],
+                        logger=logger,
                     )
                 except AiSummaryError as e:
                     logger.warning("Ask AI Error", repr(e))
@@ -82,6 +83,7 @@ class AiSummaryPlugin(BasePlugin):
                         cache=self.config["cache"],
                         cache_dir=self.config["cache_dir"],
                         model=self.config["model"],
+                        logger=logger,
                     )
                 except Exception as e:
                     logger.warning(repr(e))
