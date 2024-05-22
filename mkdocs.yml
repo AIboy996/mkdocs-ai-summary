@@ -4,7 +4,8 @@ theme:
 
 plugins:
   - ai-summary:
-      api: "tongyi"
+      api: "chatgpt"
+      model: "gpt-3.5-turbo"
       ignore_code: true
       cache: true
       cache_dir: "./"

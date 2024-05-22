@@ -7,7 +7,7 @@ where = ["."]
 
 [project]
 name = "mkdocs-ai-summary"
-version = "0.1.1"
+version = "0.2.0"
 requires-python = ">=3.10"
 dependencies = [
     "mkdocs>=1.5.3",
@@ -18,7 +18,7 @@ authors = [
 description = "A mkdocs plugin to generage summary with the help of AI."
 readme = "readme.md"
 license = {file = "LICENSE"}
-keywords = ["mkdocs", "AI", "blog"]
+keywords = ["mkdocs", "AI", "blog", "chatgpt"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
@@ -31,6 +31,7 @@ classifiers = [
 
 [project.optional-dependencies]
 tongyi = ["dashscope"]
+chatgpt = ["openai"]
 
 [project.urls]
 Homepage = "https://github.com/AIboy996/mkdocs-ai-summary"

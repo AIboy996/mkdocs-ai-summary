@@ -65,10 +65,7 @@ def get_summary_tongyi(page, prompt, markdown, cache=True, cache_dir="./"):
                 cache_dict = json.dump(cache_dict, f)
     else:
         ai_summary = ask(question)
-    return f"""!!! ai-summary "AI摘要 powered by [通义千问](https://tongyi.aliyun.com/)"
+    return f"""!!! tongyiai-summary "AI Summary powered by [通义千问](https://tongyi.aliyun.com/)"
     {ai_summary}
 """
 
-
-if __name__ == "__main__":
-    ask()

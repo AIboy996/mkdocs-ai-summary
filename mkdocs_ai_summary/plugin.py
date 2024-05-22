@@ -1,6 +1,7 @@
 from mkdocs.config import config_options
 from mkdocs.config.defaults import MkDocsConfig
 from mkdocs.plugins import BasePlugin
+from mkdocs.exceptions import ConfigurationError
 from mkdocs.structure.files import Files
 from mkdocs.structure.pages import Page
 
@@ -12,10 +13,14 @@ logger = logging.getLogger("mkdocs.plugins.ai-summary")
 
 class AiSummaryPlugin(BasePlugin):
     config_scheme = (
-        ("api", config_options.Type(str, default="tongyi")),
+        ("api", config_options.Type(str, default="chatgpt")),
         ("ignore_code", config_options.Type(bool, default=True)),
         ("cache", config_options.Type(bool, default=True)),
         ("cache_dir", config_options.Type(str, default="./")),
+        (
+            "model",
+            config_options.Type(str, default="gpt-3.5-turbo"),
+        ),  # only used for gptapi
         (
             "prompt",
             config_options.Type(
@@ -61,6 +66,30 @@ class AiSummaryPlugin(BasePlugin):
                 except Exception as e:
                     logger.warning(repr(e))
                     return markdown
+            case "chatgpt":
+                try:
+                    from .chatgpt_api import get_summary_chatgpt
+                except ImportError as e:
+                    logger.warning("chatgpt is not available", repr(e))
+                    return markdown
+
+                logger.info(f"Asking AI summary for page {page.title}")
+                try:
+                    summary = get_summary_chatgpt(
+                        page=str(page.title),
+                        prompt=self.config["prompt"],
+                        markdown=markdown_to_summary,
+                        cache=self.config["cache"],
+                        cache_dir=self.config["cache_dir"],
+                        model=self.config["model"],
+                    )
+                except Exception as e:
+                    logger.warning(repr(e))
+                    return markdown
+            case _:
+                e = repr(ConfigurationError("unrecongnized api config."))
+                logger.warning(repr(e))
+                return markdown
         h1 = re.match(r"^# .*?\n", markdown)
         # if h1 exists, then insert summary after h1
         if h1:

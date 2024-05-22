@@ -159,47 +159,9 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          mkdocs-ai-summary
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="." class="md-nav__link md-nav__link--active">
         mkdocs-ai-summary
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    Installation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    Configuration
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -255,28 +217,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    Installation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    Configuration
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -294,28 +234,35 @@
 
 
 <h1 id="mkdocs-ai-summary">mkdocs-ai-summary</h1>
-<div class="admonition ai-summary">
-<p class="admonition-title">AI摘要 powered by <a href="https://tongyi.aliyun.com/">通义千问</a></p>
-<p><code>mkdocs-ai-summary</code> is a plugin for generating AI-generated summaries on MkDocs pages using Tongyi AI. Install with pip and configure via a <code>mkdocs.yml</code> file, setting an API key for Tongyi. Add an AI summary to each page using a meta tag. The plugin supports caching to minimize API calls, with plans to expand to ChatGPT support. Live demo at <a href="https://yangzhang.site">yangzhang.site</a>.</p>
+<div class="admonition chatgpt-summary">
+<p class="admonition-title">AI Summary powered by <a href="https://chat.openai.com/">ChatGPT</a></p>
+<h1 id="mkdocs-ai-summary-is-a-tool-that-generates-an-ai-summary-for-a-webpage-it-supports-tongyi-ai-and-chatgpt-users-need-to-set-environmental-variables-for-the-api-keys-of-the-respective-services-additionally-users-can-include-a-custom-style-for-the-ai-summary-admonition-by-adding-ai-summarycss-to-the-configuration-file-the-tool-includes-options-for-ignoring-code-enabling-caching-and-specifying-prompts-the-cache-feature-helps-reduce-duplicate-api-calls-for-unchanged-content-installation-is-done-via-pip-and-a-minimal-demo-is-available-on-a-github-page-live-demos-can-be-accessed-through-provided-links-the-tool-enhances-the-summarization-process-and-aims-to-streamline-ai-powered-content-summaries">mkdocs-ai-summary is a tool that generates an <strong>ai-summary</strong> for a webpage. It supports Tongyi AI and ChatGPT. Users need to set environmental variables for the API keys of the respective services. Additionally, users can include a custom style for the ai-summary admonition by adding ai-summary.css to the configuration file. The tool includes options for ignoring code, enabling caching, and specifying prompts. The cache feature helps reduce duplicate API calls for unchanged content. Installation is done via pip, and a minimal demo is available on a GitHub page. Live demos can be accessed through provided links. The tool enhances the summarization process and aims to streamline AI-powered content summaries.</h1>
 </div>
 <p><a href="https://pypi.org/project/mkdocs-ai-summary/"><img alt="PyPI - Version" src="https://img.shields.io/pypi/v/mkdocs-ai-summary" /></a>
 <img alt="PyPI - Implementation" src="https://img.shields.io/pypi/implementation/mkdocs-ai-summary" />
 <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/mkdocs-ai-summary" /></p>
 <p>Generage an <strong>ai-summary</strong> for the page:
-<img alt="" src="assets/2024-05-22-22-00-32.png" /></p>
-<p>Live demo: <a href="https://yangzhang.site">yangzhang.site</a></p>
+<img alt="" src="assets/2024-05-23-04-11-20.png" /></p>
+<p>Minimal demo: <a href="https://aiboy996.github.io/mkdocs-ai-summary">aiboy996.github.io/mkdocs-ai-summary</a></p>
+<p>Live demo(my homepage): <a href="https://yangzhang.site">yangzhang.site</a></p>
 <h2 id="installation">Installation</h2>
 <p>You should install the package with pip:
+<div class="highlight"><pre><span></span><code>pip install mkdocs-ai-summary[chatgpt]
+</code></pre></div>
+or
 <div class="highlight"><pre><span></span><code>pip install mkdocs-ai-summary[tongyi]
 </code></pre></div></p>
 <blockquote>
 <p>⚠️⚠️⚠️⚠️</p>
-<p>Only support <a href="https://tongyi.aliyun.com/">tongyi ai</a> for now. <strong>Soon to support ChatGPT.</strong></p>
-<p>To use tongyi ai, you should set a Environmental Variable for <strong>api key</strong>:
+<p>Only support <a href="https://tongyi.aliyun.com/">tongyi ai</a> and <a href="https://chat.openai.com/">ChatGPT</a> for now.</p>
+<p>To use <strong>ChatGPT(default)</strong>, you should set a Environmental Variable for <strong>api key</strong>:
+ <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">OPENAI_API_KEY</span><span class="o">=</span><span class="s1">&#39;sk-xxxxxxx&#39;</span>
+</code></pre></div></p>
+<p>To use <strong>tongyi ai</strong>, you should set a Environmental Variable for <strong>api key</strong>:
  <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">DASHSCOPE_API_KEY</span><span class="o">=</span><span class="s1">&#39;sk-xxxxxxx&#39;</span>
 </code></pre></div></p>
 </blockquote>
-<p>[optional] Then you can include the <a href="ai-summary.css">ai-summary.css</a>(optional, this is for the <strong>custom admonition style</strong>) in the config file as below:</p>
+<p>[optional] Then you can include the <a href="ai-summary.css">ai-summary.css</a>(optional, this is for the <strong>custom  ai summary admonition style</strong>) in the config file as below:</p>
 <h2 id="configuration">Configuration</h2>
 <p>A demo for <code>mkdocs.yml</code>:</p>
 <div class="highlight"><pre><span></span><code>site_name: mkdocs-ai-summary
@@ -324,8 +271,11 @@ theme:
 
 plugins:
   - ai-summary:
-      api: &quot;tongyi&quot;
-      ignore_code: true
+      # these are all default value
+      api: &quot;chatgpt&quot;
+      model: &quot;gpt-3.5-turbo&quot;
+      # we ignore ``` code block when do summary
+      ignore_code: true 
       cache: true
       cache_dir: &quot;./&quot;
       prompt: &quot;请帮我把下面的内容总结为200字以内的摘要：&quot;
@@ -350,7 +300,16 @@ include:
 
 ....
 </code></pre></div></p>
-<h1 id="about-cache">About Cache</h1>
+<p>or you can use <strong>tongyi ai</strong> by setting:
+<div class="highlight"><pre><span></span><code>plugins:
+  - ai-summary:
+      api: &quot;tongyi&quot;
+      ignore_code: true
+      cache: true
+      cache_dir: &quot;./&quot;
+      prompt: &quot;请帮我把下面的内容总结为200字以内的摘要：&quot;
+</code></pre></div></p>
+<h2 id="about-cache">About Cache</h2>
 <p>Don't worry about duplicate api calls, we've made the cache function so that if you've done an ai-summary before and the content hasn't changed it will use the cache.</p>
 <p>Enjoy it.</p>
 
