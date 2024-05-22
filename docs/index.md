@@ -2,6 +2,7 @@
 include:
 - ai-summary
 ---
+
 # mkdocs-ai-summary
 
 [![PyPI - Version](https://img.shields.io/pypi/v/mkdocs-ai-summary)](https://pypi.org/project/mkdocs-ai-summary/)
@@ -9,7 +10,7 @@ include:
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mkdocs-ai-summary)
 
 Generage an **ai-summary** for the page:
-![](assets/2024-05-23-04-11-20.png)
+![](assets/2024-05-23-04-35-01.png)
 
 Minimal demo: [aiboy996.github.io/mkdocs-ai-summary](https://aiboy996.github.io/mkdocs-ai-summary)
 
@@ -27,17 +28,19 @@ pip install mkdocs-ai-summary[tongyi]
 ```
 > ⚠️⚠️⚠️⚠️
 > 
-> Only support [tongyi ai](https://tongyi.aliyun.com/) and [ChatGPT](https://chat.openai.com/) for now.
+> Only support [ChatGPT](https://chat.openai.com/) and [tongyi ai](https://tongyi.aliyun.com/) for now.
 >  
 >  To use **ChatGPT(default)**, you should set a Environmental Variable for **api key**:
 >  ```bash
 >  export OPENAI_API_KEY='sk-xxxxxxx'
 >  ```
->
+> [how to get an OPENAI_API_KEY?](https://platform.openai.com/docs/quickstart)
+> 
 >  To use **tongyi ai**, you should set a Environmental Variable for **api key**:
 >  ```bash
 >  export DASHSCOPE_API_KEY='sk-xxxxxxx'
 >  ```
+> [how to get an DASHSCOPE_API_KEY?](https://dashscope.console.aliyun.com/)
 
 [optional] Then you can include the [ai-summary.css](./ai-summary.css)(optional, this is for the **custom  ai summary admonition style**) in the config file as below:
 

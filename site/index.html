@@ -159,9 +159,54 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          mkdocs-ai-summary
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="." class="md-nav__link md-nav__link--active">
         mkdocs-ai-summary
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-cache" class="md-nav__link">
+    About Cache
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -217,6 +262,35 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-cache" class="md-nav__link">
+    About Cache
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -236,13 +310,13 @@
 <h1 id="mkdocs-ai-summary">mkdocs-ai-summary</h1>
 <div class="admonition chatgpt-summary">
 <p class="admonition-title">AI Summary powered by <a href="https://chat.openai.com/">ChatGPT</a></p>
-<h1 id="mkdocs-ai-summary-is-a-tool-that-generates-an-ai-summary-for-a-webpage-it-supports-tongyi-ai-and-chatgpt-users-need-to-set-environmental-variables-for-the-api-keys-of-the-respective-services-additionally-users-can-include-a-custom-style-for-the-ai-summary-admonition-by-adding-ai-summarycss-to-the-configuration-file-the-tool-includes-options-for-ignoring-code-enabling-caching-and-specifying-prompts-the-cache-feature-helps-reduce-duplicate-api-calls-for-unchanged-content-installation-is-done-via-pip-and-a-minimal-demo-is-available-on-a-github-page-live-demos-can-be-accessed-through-provided-links-the-tool-enhances-the-summarization-process-and-aims-to-streamline-ai-powered-content-summaries">mkdocs-ai-summary is a tool that generates an <strong>ai-summary</strong> for a webpage. It supports Tongyi AI and ChatGPT. Users need to set environmental variables for the API keys of the respective services. Additionally, users can include a custom style for the ai-summary admonition by adding ai-summary.css to the configuration file. The tool includes options for ignoring code, enabling caching, and specifying prompts. The cache feature helps reduce duplicate API calls for unchanged content. Installation is done via pip, and a minimal demo is available on a GitHub page. Live demos can be accessed through provided links. The tool enhances the summarization process and aims to streamline AI-powered content summaries.</h1>
+<p>mkdocs-ai-summary is a tool that generates an AI-generated summary for a web page. It supports ChatGPT and tongyi ai for now. To use ChatGPT, you need to set an Environmental Variable for the api key. For tongyi ai, a similar step is required. An optional custom ai summary admonition style can be included by adding ai-summary.css to the configuration file. The tool includes cache functionality to avoid duplicate api calls for unchanged content. The package can be installed via pip. Minimal and live demos are available. Enjoy using mkdocs-ai-summary for creating automated summaries.</p>
 </div>
 <p><a href="https://pypi.org/project/mkdocs-ai-summary/"><img alt="PyPI - Version" src="https://img.shields.io/pypi/v/mkdocs-ai-summary" /></a>
 <img alt="PyPI - Implementation" src="https://img.shields.io/pypi/implementation/mkdocs-ai-summary" />
 <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/mkdocs-ai-summary" /></p>
 <p>Generage an <strong>ai-summary</strong> for the page:
-<img alt="" src="assets/2024-05-23-04-11-20.png" /></p>
+<img alt="" src="assets/2024-05-23-04-35-01.png" /></p>
 <p>Minimal demo: <a href="https://aiboy996.github.io/mkdocs-ai-summary">aiboy996.github.io/mkdocs-ai-summary</a></p>
 <p>Live demo(my homepage): <a href="https://yangzhang.site">yangzhang.site</a></p>
 <h2 id="installation">Installation</h2>
@@ -254,13 +328,15 @@ or
 </code></pre></div></p>
 <blockquote>
 <p>⚠️⚠️⚠️⚠️</p>
-<p>Only support <a href="https://tongyi.aliyun.com/">tongyi ai</a> and <a href="https://chat.openai.com/">ChatGPT</a> for now.</p>
+<p>Only support <a href="https://chat.openai.com/">ChatGPT</a> and <a href="https://tongyi.aliyun.com/">tongyi ai</a> for now.</p>
 <p>To use <strong>ChatGPT(default)</strong>, you should set a Environmental Variable for <strong>api key</strong>:
  <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">OPENAI_API_KEY</span><span class="o">=</span><span class="s1">&#39;sk-xxxxxxx&#39;</span>
-</code></pre></div></p>
+</code></pre></div>
+<a href="https://platform.openai.com/docs/quickstart">how to get an OPENAI_API_KEY?</a></p>
 <p>To use <strong>tongyi ai</strong>, you should set a Environmental Variable for <strong>api key</strong>:
  <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">DASHSCOPE_API_KEY</span><span class="o">=</span><span class="s1">&#39;sk-xxxxxxx&#39;</span>
-</code></pre></div></p>
+</code></pre></div>
+<a href="https://dashscope.console.aliyun.com/">how to get an DASHSCOPE_API_KEY?</a></p>
 </blockquote>
 <p>[optional] Then you can include the <a href="ai-summary.css">ai-summary.css</a>(optional, this is for the <strong>custom  ai summary admonition style</strong>) in the config file as below:</p>
 <h2 id="configuration">Configuration</h2>
