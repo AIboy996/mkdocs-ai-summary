@@ -296,7 +296,7 @@
 <h1 id="mkdocs-ai-summary">mkdocs-ai-summary</h1>
 <div class="admonition ai-summary">
 <p class="admonition-title">AI摘要 powered by <a href="https://tongyi.aliyun.com/">通义千问</a></p>
-<p><code>mkdocs-ai-summary</code> is a Python package that generates AI-generated summaries for MkDocs pages using Tongyi AI. It supports live demos on <a href="https://yangzhang.site">yangzhang.site</a> and is compatible with Tongyi AI only, soon to include ChatGPT. Install with pip, and include <code>ai-summary.css</code> (optional). Configure in <code>mkdocs.yml</code> by adding meta tags to pages. Caching ensures efficient re-use of summaries when content remains unchanged.</p>
+<p><code>mkdocs-ai-summary</code> is a plugin for generating AI-generated summaries on MkDocs pages using Tongyi AI. Install with pip and configure via a <code>mkdocs.yml</code> file, setting an API key for Tongyi. Add an AI summary to each page using a meta tag. The plugin supports caching to minimize API calls, with plans to expand to ChatGPT support. Live demo at <a href="https://yangzhang.site">yangzhang.site</a>.</p>
 </div>
 <p><a href="https://pypi.org/project/mkdocs-ai-summary/"><img alt="PyPI - Version" src="https://img.shields.io/pypi/v/mkdocs-ai-summary" /></a>
 <img alt="PyPI - Implementation" src="https://img.shields.io/pypi/implementation/mkdocs-ai-summary" />
@@ -309,9 +309,13 @@
 <div class="highlight"><pre><span></span><code>pip install mkdocs-ai-summary[tongyi]
 </code></pre></div></p>
 <blockquote>
+<p>⚠️⚠️⚠️⚠️</p>
 <p>Only support <a href="https://tongyi.aliyun.com/">tongyi ai</a> for now. <strong>Soon to support ChatGPT.</strong></p>
+<p>To use tongyi ai, you should set a Environmental Variable for <strong>api key</strong>:
+ <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">DASHSCOPE_API_KEY</span><span class="o">=</span><span class="s1">&#39;sk-xxxxxxx&#39;</span>
+</code></pre></div></p>
 </blockquote>
-<p>And you should include the <a href="ai-summary.css">ai-summary.css</a>(optional, this is for the <strong>custom admonition style</strong>) in the config file as below:</p>
+<p>[optional] Then you can include the <a href="ai-summary.css">ai-summary.css</a>(optional, this is for the <strong>custom admonition style</strong>) in the config file as below:</p>
 <h2 id="configuration">Configuration</h2>
 <p>A demo for <code>mkdocs.yml</code>:</p>
 <div class="highlight"><pre><span></span><code>site_name: mkdocs-ai-summary

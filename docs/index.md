@@ -20,9 +20,16 @@ You should install the package with pip:
 pip install mkdocs-ai-summary[tongyi]
 ```
 
+> ⚠️⚠️⚠️⚠️
+> 
 > Only support [tongyi ai](https://tongyi.aliyun.com/) for now. **Soon to support ChatGPT.**
+>  
+>  To use tongyi ai, you should set a Environmental Variable for **api key**:
+>  ```bash
+>  export DASHSCOPE_API_KEY='sk-xxxxxxx'
+>  ```
 
-And you should include the [ai-summary.css](./ai-summary.css)(optional, this is for the **custom admonition style**) in the config file as below:
+[optional] Then you can include the [ai-summary.css](./ai-summary.css)(optional, this is for the **custom admonition style**) in the config file as below:
 
 ## Configuration
 
