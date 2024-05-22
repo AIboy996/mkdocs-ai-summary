@@ -41,8 +41,8 @@ class AiSummaryPlugin(BasePlugin):
         match self.config["api"]:
             case "tongyi":
                 try:
-                    from tongyi_api import get_summary_tongyi, AiSummaryError
-                except ImportError:
+                    from .tongyi_api import get_summary_tongyi, AiSummaryError
+                except ImportError as e:
                     logger.warning("tongyi is not available", repr(e))
                     return markdown
 

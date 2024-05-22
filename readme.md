@@ -3,7 +3,9 @@
 Generage an **ai-summary** for the page:
 ![](assets/2024-05-22-22-00-32.png)
 
-Live demo: [yangzhang.site](https://yangzhang.site)
+Minimal demo [aiboy996.github.io/mkdocs-ai-summary](https://aiboy996.github.io/mkdocs-ai-summary)
+
+Live demo(my homepage): [yangzhang.site](https://yangzhang.site)
 
 ## Installation
 
