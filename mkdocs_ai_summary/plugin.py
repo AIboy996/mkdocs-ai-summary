@@ -25,7 +25,8 @@ class AiSummaryPlugin(BasePlugin):
             "prompt",
             config_options.Type(
                 str,
-                default="Please help me summarize the following content into an abstract within 200 words: ",
+                default="Please help me summarize the following content into an"
+                "abstract within 200 words: ",
             ),
         ),
     )

@@ -378,10 +378,8 @@
 <h1 id="mkdocs-ai-summary">mkdocs-ai-summary</h1>
 <div class="admonition chatgpt-summary">
 <p class="admonition-title">AI Summary powered by <a href="https://chat.openai.com/">ChatGPT</a></p>
-<p>The <strong>mkdocs-ai-summary</strong> package allows users to generate an AI-powered summary for web pages. It supports integration with <a href="https://chat.openai.com/">ChatGPT</a> and <a href="https://tongyi.aliyun.com/">tongyi ai</a>. To use ChatGPT (default), an environmental variable for the API key needs to be set. Similarly, for tongyi ai, a separate API key environmental variable must be configured. Users can include an optional <strong>ai-summary.css</strong> file for custom AI summary admonition styles.</p>
+<p>The <code>mkdocs-ai-summary</code> is a Python package available on PyPI that generates AI-based summaries for MkDocs pages. It supports two AI platforms: ChatGPT and Tongyi AI. Users must set an environmental variable for the API key of the chosen platform. For ChatGPT, the <code>OPENAI_API_KEY</code> is required, while for Tongyi AI, the <code>DASHSCOPE_API_KEY</code> is necessary. The package allows customization through several configuration options such as the AI model, caching preferences, and prompt settings. Configuration can be either global in the <code>mkdocs.yml</code> file or page-specific via meta tags. The caching mechanism ensures that repetitive API calls are avoided by storing previously generated summaries. Optional CSS for custom summary styles can also be included. For a minimal demo, visit <a href="https://aiboy996.github.io/mkdocs-ai-summary">aiboy996.github.io/mkdocs-ai-summary</a>, and for a live example, check <a href="https://yangzhang.site">yangzhang.site</a>. Enjoy efficient documentation summarization with <code>mkdocs-ai-summary</code>.</p>
 </div>
-<p>Configuration options include setting the AI provider (ChatGPT or tongyi), model, ignoring code blocks, cache settings, cache directory, and the default prompt for summarization. Specific pages can be configured for AI summary generation by setting up meta tags or individual page configurations in the <code>mkdocs.yml</code> file. The package utilizes caching to avoid duplicate API calls for unchanged content.</p>
-<p>The package's minimal demo is available at <a href="https://aiboy996.github.io/mkdocs-ai-summary">aiboy996.github.io/mkdocs-ai-summary</a>, while a live demo is showcased on <a href="https://yangzhang.site">yangzhang.site</a>. Users can leverage this tool to quickly summarize content within a specified word limit, enhancing webpage accessibility and readability.</p>
 <p><a href="https://pypi.org/project/mkdocs-ai-summary/"><img alt="PyPI - Version" src="https://img.shields.io/pypi/v/mkdocs-ai-summary" /></a>
 <img alt="PyPI - Implementation" src="https://img.shields.io/pypi/implementation/mkdocs-ai-summary" />
 <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/mkdocs-ai-summary" /></p>
@@ -512,7 +510,8 @@ include:
 <span class="k">-</span><span class="w"> </span>ai-summary
 ai-summary-config:
     api: &quot;tongyi&quot;
-<span class="gu">    model: &quot;qwen-turbo&quot;</span>
+    model: &quot;qwen-turbo&quot;
+<span class="gu">    prompt: &quot;帮我把下面的内容总结为200字以内的摘要：&quot;</span>
 <span class="gu">---</span>
 
 <span class="gh"># title</span>

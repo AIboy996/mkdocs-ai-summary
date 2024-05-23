@@ -5,11 +5,11 @@ theme:
 plugins:
   - ai-summary:
       api: "chatgpt"
-      model: "gpt-3.5-turbo"
+      model: "gpt-4o"
       ignore_code: true
       cache: true
       cache_dir: "./"
-      prompt: "Please help me summarize the following content into an abstract within 200 words: "
+      prompt: "Please help me summarize the following content into an abstract within 200 words in source language. Must within 200 words. Do not use linebreak.: "
   - tags
 
 markdown_extensions:

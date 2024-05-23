@@ -123,6 +123,7 @@ include:
 ai-summary-config:
     api: "tongyi"
     model: "qwen-turbo"
+    prompt: "帮我把下面的内容总结为200字以内的摘要："
 ---
 
 # title
