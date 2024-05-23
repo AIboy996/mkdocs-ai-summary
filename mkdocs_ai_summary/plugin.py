@@ -20,11 +20,12 @@ class AiSummaryPlugin(BasePlugin):
         (
             "model",
             config_options.Type(str, default="gpt-3.5-turbo"),
-        ),  # only used for gptapi
+        ),
         (
             "prompt",
             config_options.Type(
-                str, default="请帮我把下面的内容总结为200字以内的摘要："
+                str,
+                default="Please help me summarize the following content into an abstract within 200 words: ",
             ),
         ),
     )
@@ -36,14 +37,21 @@ class AiSummaryPlugin(BasePlugin):
         if page.meta:
             if "ai-summary" not in page.meta.get("include", {}):
                 return markdown
+            page_config = page.meta.get("ai-summary-config", {})
+            api = page_config.get("api", self.config["api"])
+            ignore_code = page_config.get("ignore_code", self.config["ignore_code"])
+            prompt = page_config.get("prompt", self.config["prompt"])
+            cache = page_config.get("cache", self.config["cache"])
+            cache_dir = page_config.get("cache_dir", self.config["cache_dir"])
+            model = page_config.get("model", self.config["model"])
         else:
             return markdown
         # use api to get ai summary
-        if self.config["ignore_code"]:
+        if ignore_code:
             # delete code block
             pattern = re.compile("```.*?```", re.S)
             markdown_to_summary = re.sub(pattern, "", markdown)
-        match self.config["api"]:
+        match api:
             case "tongyi":
                 try:
                     from .tongyi_api import get_summary_tongyi, AiSummaryError
@@ -55,10 +63,11 @@ class AiSummaryPlugin(BasePlugin):
                 try:
                     summary = get_summary_tongyi(
                         page=str(page.title),
-                        prompt=self.config["prompt"],
+                        prompt=prompt,
                         markdown=markdown_to_summary,
-                        cache=self.config["cache"],
-                        cache_dir=self.config["cache_dir"],
+                        cache=cache,
+                        cache_dir=cache_dir,
+                        model=model,
                         logger=logger,
                     )
                 except AiSummaryError as e:
@@ -78,11 +87,11 @@ class AiSummaryPlugin(BasePlugin):
                 try:
                     summary = get_summary_chatgpt(
                         page=str(page.title),
-                        prompt=self.config["prompt"],
+                        prompt=prompt,
                         markdown=markdown_to_summary,
-                        cache=self.config["cache"],
-                        cache_dir=self.config["cache_dir"],
-                        model=self.config["model"],
+                        cache=cache,
+                        cache_dir=cache_dir,
+                        model=model,
                         logger=logger,
                     )
                 except Exception as e:

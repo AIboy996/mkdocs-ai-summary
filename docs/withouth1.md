@@ -1,9 +1,12 @@
 ---
 tags:
 - PyIntro
-title: 内置关键字(without h1)
+title: 内置关键字(without h1, tongyi ai summary)
 include:
 - ai-summary
+ai-summary-config:
+    api: "tongyi"
+    model: "qwen-turbo"
 ---
 
 > copy from <https://yangzhang.site/Python/BasicSyntax/builtin_keyword/>

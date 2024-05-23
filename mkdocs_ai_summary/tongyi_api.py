@@ -15,13 +15,13 @@ class AiSummaryError(Exception):
         super().__init__(*args)
 
 
-def ask(prompt):
+def ask(prompt, model="qwen-turbo"):
     messages = [
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": prompt},
     ]
     response = Generation.call(
-        model="qwen-turbo",
+        model=model,
         messages=messages,
         seed=random.randint(1, 10000),
         result_format="text",
@@ -41,7 +41,13 @@ def ask(prompt):
 
 
 def get_summary_tongyi(
-    page, prompt, markdown, cache=True, cache_dir="./", logger=logging.Logger("")
+    page,
+    prompt,
+    markdown,
+    cache=True,
+    cache_dir="./",
+    model="qwen-turbo",
+    logger=logging.Logger(""),
 ):
     question = (prompt + markdown)[: MAX_LENGTH - 10]
     if cache:
@@ -60,15 +66,15 @@ def get_summary_tongyi(
                 logger.info("Using cache.")
             # asked before, but content changed
             else:
-                ai_summary = ask(question)
+                ai_summary = ask(question, model=model)
         # do not aksed before
         else:
-            ai_summary = ask(question)
+            ai_summary = ask(question, model=model)
             cache_dict[page] = {"content_md5": content_md5, "ai_summary": ai_summary}
             with open(f"{cache_dir}/_ai_summary_cache.json", "w+") as f:
                 cache_dict = json.dump(cache_dict, f)
     else:
-        ai_summary = ask(question)
+        ai_summary = ask(question, model=model)
     return f"""!!! tongyiai-summary "AI Summary powered by [通义千问](https://tongyi.aliyun.com/)"
     {ai_summary}
 """

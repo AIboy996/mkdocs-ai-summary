@@ -9,7 +9,7 @@ plugins:
       ignore_code: true
       cache: true
       cache_dir: "./"
-      prompt: "请帮我把下面的内容总结为200字以内的摘要："
+      prompt: "Please help me summarize the following content into an abstract within 200 words: "
   - tags
 
 markdown_extensions:

@@ -195,6 +195,40 @@
     Configuration
   </a>
   
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#options-can-be-set" class="md-nav__link">
+    Options can be set
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-chatgpt-summary" class="md-nav__link">
+    For ChatGPT Summary
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-tongyi-ai-summary" class="md-nav__link">
+    For tongyi ai Summary
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-ai-summary-for-specific-page" class="md-nav__link">
+    Setup ai-summary for specific page
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -221,7 +255,7 @@
   
     <li class="md-nav__item">
       <a href="withh1/" class="md-nav__link">
-        内置关键字(with h1)
+        内置关键字(with h1, ChatGPT summary)
       </a>
     </li>
   
@@ -236,7 +270,7 @@
   
     <li class="md-nav__item">
       <a href="withouth1/" class="md-nav__link">
-        内置关键字(without h1)
+        内置关键字(without h1, tongyi ai summary)
       </a>
     </li>
   
@@ -280,6 +314,40 @@
     Configuration
   </a>
   
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#options-can-be-set" class="md-nav__link">
+    Options can be set
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-chatgpt-summary" class="md-nav__link">
+    For ChatGPT Summary
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-tongyi-ai-summary" class="md-nav__link">
+    For tongyi ai Summary
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-ai-summary-for-specific-page" class="md-nav__link">
+    Setup ai-summary for specific page
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -310,8 +378,10 @@
 <h1 id="mkdocs-ai-summary">mkdocs-ai-summary</h1>
 <div class="admonition chatgpt-summary">
 <p class="admonition-title">AI Summary powered by <a href="https://chat.openai.com/">ChatGPT</a></p>
-<p>The <code>mkdocs-ai-summary</code> package allows users to generate an AI summary for a webpage. It currently supports ChatGPT and tongyi ai. Users need to set an API key environmental variable for either service. A minimal demo is available at <a href="https://aiboy996.github.io/mkdocs-ai-summary">aiboy996.github.io/mkdocs-ai-summary</a>. Customization options include using the <code>ai-summary.css</code> for a personalized AI summary admonition style. The package includes a caching feature to avoid duplicate API calls for unchanged content. For installation, users should use pip and configure the <code>mkdocs.yml</code> file accordingly. The tool enhances content summarization by leveraging AI models and simplifies the process for users.</p>
+<p>The <strong>mkdocs-ai-summary</strong> package allows users to generate an AI-powered summary for web pages. It supports integration with <a href="https://chat.openai.com/">ChatGPT</a> and <a href="https://tongyi.aliyun.com/">tongyi ai</a>. To use ChatGPT (default), an environmental variable for the API key needs to be set. Similarly, for tongyi ai, a separate API key environmental variable must be configured. Users can include an optional <strong>ai-summary.css</strong> file for custom AI summary admonition styles.</p>
 </div>
+<p>Configuration options include setting the AI provider (ChatGPT or tongyi), model, ignoring code blocks, cache settings, cache directory, and the default prompt for summarization. Specific pages can be configured for AI summary generation by setting up meta tags or individual page configurations in the <code>mkdocs.yml</code> file. The package utilizes caching to avoid duplicate API calls for unchanged content.</p>
+<p>The package's minimal demo is available at <a href="https://aiboy996.github.io/mkdocs-ai-summary">aiboy996.github.io/mkdocs-ai-summary</a>, while a live demo is showcased on <a href="https://yangzhang.site">yangzhang.site</a>. Users can leverage this tool to quickly summarize content within a specified word limit, enhancing webpage accessibility and readability.</p>
 <p><a href="https://pypi.org/project/mkdocs-ai-summary/"><img alt="PyPI - Version" src="https://img.shields.io/pypi/v/mkdocs-ai-summary" /></a>
 <img alt="PyPI - Implementation" src="https://img.shields.io/pypi/implementation/mkdocs-ai-summary" />
 <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/mkdocs-ai-summary" /></p>
@@ -340,21 +410,69 @@ or
 </blockquote>
 <p>[optional] Then you can include the <a href="ai-summary.css">ai-summary.css</a>(optional, this is for the <strong>custom  ai summary admonition style</strong>) in the config file as below:</p>
 <h2 id="configuration">Configuration</h2>
-<p>A demo for <code>mkdocs.yml</code>:</p>
+<h3 id="options-can-be-set">Options can be set</h3>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>type</th>
+<th>default value</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>api</td>
+<td>str</td>
+<td>chatgpt</td>
+<td>only support chatgpt or tongyi</td>
+</tr>
+<tr>
+<td>model</td>
+<td>str</td>
+<td>gpt-3.5-turbo</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ignore_code</td>
+<td>bool</td>
+<td>true</td>
+<td>ignore code block in markdown</td>
+</tr>
+<tr>
+<td>cache</td>
+<td>bool</td>
+<td>true</td>
+<td>-</td>
+</tr>
+<tr>
+<td>cache_dir</td>
+<td>str</td>
+<td>"./"</td>
+<td>-</td>
+</tr>
+<tr>
+<td>prompt</td>
+<td>str</td>
+<td>"Please help me summarize the following content into an abstract within 200 words: "</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="for-chatgpt-summary">For ChatGPT Summary</h3>
+<p>Setup <code>mkdocs.yml</code> like this:</p>
 <div class="highlight"><pre><span></span><code>site_name: mkdocs-ai-summary
 theme:
   name: material
 
 plugins:
   - ai-summary:
-      # these are all default value
       api: &quot;chatgpt&quot;
       model: &quot;gpt-3.5-turbo&quot;
-      # we ignore ``` code block when do summary
       ignore_code: true 
       cache: true
       cache_dir: &quot;./&quot;
-      prompt: &quot;请帮我把下面的内容总结为200字以内的摘要：&quot;
+      prompt: &quot;Please help me summarize the following content into an abstract within 200 words: &quot;
   - tags
 
 markdown_extensions:
@@ -366,25 +484,42 @@ markdown_extensions:
 extra_css:
   - ai-summary.css
 </code></pre></div>
-<p>Then for each page you can add the ai-summary with a meta tag:
+<p>Then for the page you want an ai-summary, just add a meta tag:
 <div class="highlight"><pre><span></span><code>---
 include:
 <span class="gu">- ai-summary</span>
 <span class="gu">---</span>
 
-<span class="gh"># h1</span>
+<span class="gh"># title</span>
 
-....
+hello ai summary.
 </code></pre></div></p>
+<h3 id="for-tongyi-ai-summary">For tongyi ai Summary</h3>
 <p>or you can use <strong>tongyi ai</strong> by setting:
 <div class="highlight"><pre><span></span><code>plugins:
   - ai-summary:
       api: &quot;tongyi&quot;
+      model: &quot;qwen-turbo&quot;
       ignore_code: true
       cache: true
       cache_dir: &quot;./&quot;
-      prompt: &quot;请帮我把下面的内容总结为200字以内的摘要：&quot;
+      prompt: &quot;Please help me summarize the following content into an abstract within 200 words: &quot;
 </code></pre></div></p>
+<h3 id="setup-ai-summary-for-specific-page">Setup ai-summary for specific page</h3>
+<p>You can also setup ai summary for each page separately:</p>
+<div class="highlight"><pre><span></span><code>---
+include:
+<span class="k">-</span><span class="w"> </span>ai-summary
+ai-summary-config:
+    api: &quot;tongyi&quot;
+<span class="gu">    model: &quot;qwen-turbo&quot;</span>
+<span class="gu">---</span>
+
+<span class="gh"># title</span>
+
+hello ai summary.
+</code></pre></div>
+<p>all config options are available. <strong>Page configuration will override unified configuration.</strong></p>
 <h2 id="about-cache">About Cache</h2>
 <p>Don't worry about duplicate api calls, we've made the cache function so that if you've done an ai-summary before and the content hasn't changed it will use the cache.</p>
 <p>Enjoy it.</p>
@@ -409,13 +544,13 @@ include:
       
       
         
-        <a href="withh1/" class="md-footer__link md-footer__link--next" aria-label="Next: 内置关键字(with h1)" rel="next">
+        <a href="withh1/" class="md-footer__link md-footer__link--next" aria-label="Next: 内置关键字(with h1, ChatGPT summary)" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              内置关键字(with h1)
+              内置关键字(with h1, ChatGPT summary)
             </div>
           </div>
           <div class="md-footer__button md-icon">

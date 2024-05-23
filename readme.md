@@ -41,7 +41,21 @@ pip install mkdocs-ai-summary[tongyi]
 
 ## Configuration
 
-A demo for `mkdocs.yml`:
+### Options can be set
+
+name|type|default value| note
+--|--|--|--
+api|str|chatgpt| only support chatgpt or tongyi
+model|str|gpt-3.5-turbo | -
+ignore_code|bool|true| ignore code block in markdown
+cache|bool|true| -
+cache_dir|str|"./"| -
+prompt|str|"Please help me summarize the following content into an abstract within 200 words: "| -
+
+
+### For ChatGPT Summary
+
+Setup `mkdocs.yml` like this:
 
 ```yml
 site_name: mkdocs-ai-summary
@@ -50,14 +64,12 @@ theme:
 
 plugins:
   - ai-summary:
-      # these are all default value
       api: "chatgpt"
       model: "gpt-3.5-turbo"
-      # we ignore ``` code block when do summary
       ignore_code: true 
       cache: true
       cache_dir: "./"
-      prompt: "请帮我把下面的内容总结为200字以内的摘要："
+      prompt: "Please help me summarize the following content into an abstract within 200 words: "
   - tags
 
 markdown_extensions:
@@ -70,28 +82,50 @@ extra_css:
   - ai-summary.css
 ```
 
-Then for each page you can add the ai-summary with a meta tag:
+Then for the page you want an ai-summary, just add a meta tag:
 ```markdown
 ---
 include:
 - ai-summary
 ---
 
-# h1
+# title
 
-....
+hello ai summary.
 ```
 
+### For tongyi ai Summary
 or you can use **tongyi ai** by setting:
 ```yml
 plugins:
   - ai-summary:
       api: "tongyi"
+      model: "qwen-turbo"
       ignore_code: true
       cache: true
       cache_dir: "./"
-      prompt: "请帮我把下面的内容总结为200字以内的摘要："
+      prompt: "Please help me summarize the following content into an abstract within 200 words: "
 ```
+
+### Setup ai-summary for specific page
+
+You can also setup ai summary for each page separately:
+
+```markdown
+---
+include:
+- ai-summary
+ai-summary-config:
+    api: "tongyi"
+    model: "qwen-turbo"
+---
+
+# title
+
+hello ai summary.
+```
+
+all config options are available. **Page configuration will override unified configuration.**
 
 ## About Cache
 

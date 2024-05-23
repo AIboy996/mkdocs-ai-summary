@@ -5,7 +5,7 @@ include:
 - ai-summary
 ---
 
-# 内置关键字(with h1)
+# 内置关键字(with h1, ChatGPT summary)
 
 > copy from <https://yangzhang.site/Python/BasicSyntax/builtin_keyword/>
 
