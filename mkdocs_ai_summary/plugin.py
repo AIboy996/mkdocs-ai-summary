@@ -1,3 +1,4 @@
+from mkdocs import plugins
 from mkdocs.config import config_options
 from mkdocs.config.defaults import MkDocsConfig
 from mkdocs.plugins import BasePlugin
@@ -13,7 +14,7 @@ logger = logging.getLogger("mkdocs.plugins.ai-summary")
 
 class AiSummaryPlugin(BasePlugin):
     config_scheme = (
-        ("api", config_options.Type(str, default="chatgpt")),
+        ("api", config_options.Choice(["chatgpt", "tongyi"], default="chatgpt")),
         ("ignore_code", config_options.Type(bool, default=True)),
         ("cache", config_options.Type(bool, default=True)),
         ("cache_dir", config_options.Type(str, default="./")),
@@ -31,6 +32,7 @@ class AiSummaryPlugin(BasePlugin):
         ),
     )
 
+    @plugins.event_priority(50)
     def on_page_markdown(
         self, markdown: str, *, page: Page, config: MkDocsConfig, files: Files
     ) -> str | None:
@@ -60,7 +62,7 @@ class AiSummaryPlugin(BasePlugin):
                     logger.warning("tongyi is not available", repr(e))
                     return markdown
 
-                logger.info(f"Asking AI summary for page {page.title}")
+                logger.info(f"Asking AI summary for page {page.title}({page.url})")
                 try:
                     summary = get_summary_tongyi(
                         page=str(page.title),
@@ -84,7 +86,7 @@ class AiSummaryPlugin(BasePlugin):
                     logger.warning("chatgpt is not available", repr(e))
                     return markdown
 
-                logger.info(f"Asking AI summary for page {page.title}")
+                logger.info(f"Asking AI summary for page {page.title}({page.url})")
                 try:
                     summary = get_summary_chatgpt(
                         page=str(page.title),
