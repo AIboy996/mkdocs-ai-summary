@@ -6,6 +6,8 @@ from http import HTTPStatus
 from dashscope import Generation
 import logging
 
+from .chatgpt_api import get_cache_dict, ask_with_cache
+
 MAX_LENGTH = 6000
 
 
@@ -52,29 +54,17 @@ def get_summary_tongyi(
     question = (prompt + markdown)[: MAX_LENGTH - 10]
     if cache:
         content_md5 = md5(markdown.encode("utf-8")).hexdigest()
-        cache_file = f"{cache_dir}_ai_summary_cache.json"
-        if os.path.exists(cache_file):
-            with open(cache_file, "r+") as f:
-                cache_dict = json.load(f)
-        else:
-            cache_dict = {}
-
-        # asked before
-        if page in cache_dict:
-            if content_md5 == cache_dict[page]["content_md5"]:
-                ai_summary = cache_dict[page]["ai_summary"]
-                logger.info("Using cache.")
-            # asked before, but content changed
-            else:
-                ai_summary = ask(question, model=model)
-        # do not aksed before
-        else:
-            ai_summary = ask(question, model=model)
-            cache_dict[page] = {"content_md5": content_md5, "ai_summary": ai_summary}
-            with open(f"{cache_dir}/_ai_summary_cache.json", "w+") as f:
-                cache_dict = json.dump(cache_dict, f)
+        cache_dict = get_cache_dict(cache_dir, file_suffix="_ai_summary_cache1.json")
+        ai_summary = ask_with_cache(
+            question, page, content_md5, model, cache_dict, logger
+        )
+        # always refresh the cache
+        cache_dict[page] = {"content_md5": content_md5, "ai_summary": ai_summary}
+        with open(f"{cache_dir}/_ai_summary_cache2.json", "w+") as f:
+            cache_dict = json.dump(cache_dict, f, indent=4)
     else:
         ai_summary = ask(question, model=model)
+    removed_line_break = ai_summary.replace(r"\n", "")
     return f"""!!! tongyiai-summary "AI Summary powered by [通义千问](https://tongyi.aliyun.com/)"
-    {ai_summary}
+    {removed_line_break}
 """

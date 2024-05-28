@@ -7,7 +7,7 @@ where = ["."]
 
 [project]
 name = "mkdocs-ai-summary"
-version = "0.2.3"
+version = "0.2.4"
 requires-python = ">=3.10"
 dependencies = [
     "mkdocs>=1.5.3",
