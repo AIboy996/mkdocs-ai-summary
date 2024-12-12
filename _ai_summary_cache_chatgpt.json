@@ -1,7 +1,7 @@
 {
     "mkdocs-ai-summary": {
-        "content_md5": "1b161a864feefb7971c12fb67fba991f",
-        "ai_summary": "mkdocs-ai-summary is a plugin that generates an AI summary for a webpage. The plugin can be installed via pip and supports the usage of ChatGPT and Tongyi AI. To utilize these, users are required to set an Environmental Variable for the api key. The plugin also includes optional support for the ai-summary.css for custom AI summary admonition style. Configuration parameters include api, model, ignore_code, cache, cache_dir, and prompt amongst others. The plugin also supports individual page configuration for the AI summary. The cache functionality ensures there are no unnecessary duplicate api calls. If the content hasn't changed since the last summary, the cache will be used. This software can be viewed with a demo on 'aiboy996.github.io/mkdocs-ai-summary' and 'yangzhang.site'.\n"
+        "content_md5": "1e4694ce248e7caf8eb4a9d3f3fa2b36",
+        "ai_summary": "Mkdocs-ai-summary is a tool designed for users who need AI to summarize their words. Originally created for a blog site, it is now open to the public. The package is installed with pip, and currently supports only ChatGPT and Tongyi AI. To use these, an environmental variable must be set for the respective api key. Configuration options include api, model, ignore_code, cache, cache_dir, and prompt. Setup guides are provided for both ChatGPT and Tongyi AI summaries. There's also an option to setup ai summary for each page separately. The package comes with a cache function to prevent duplicate api calls. The function checks if the content has been summarized before and, if it hasn't changed, it uses the cache. The creators extend their thanks to projects like mkdocs and mkdocs-material."
     },
     "Example 3(tarnslated by ChatGPT summary)": {
         "content_md5": "458015aebe0c0a4a629a97cb9c121443",

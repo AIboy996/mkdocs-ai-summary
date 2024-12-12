@@ -9,12 +9,20 @@ include:
 ![PyPI - Implementation](https://img.shields.io/pypi/implementation/mkdocs-ai-summary)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mkdocs-ai-summary)
 
-Generage an **ai-summary** for the page:
-![](assets/2024-05-23-04-35-01.png)
+## Demos
+Minimal demo(raw mkdocs): [AIboy996/mkdocs-ai-summary-minimal-example](https://aiboy996.github.io/mkdocs-ai-summary-minimal-example/)
 
-Minimal demo: [aiboy996.github.io/mkdocs-ai-summary](https://aiboy996.github.io/mkdocs-ai-summary)
+[![AIboy996/mkdocs-ai-summary-minimal-example - GitHub](https://gh-card.dev/repos/AIboy996/mkdocs-ai-summary-minimal-example.svg?fullname=)](https://github.com/AIboy996/mkdocs-ai-summary-minimal-example)
 
-Live demo(my homepage): [yangzhang.site](https://yangzhang.site)
+Another demo(mkdocs-material theme): [AIboy996/mkdocs-ai-summary](https://aiboy996.github.io/mkdocs-ai-summary)
+
+[![AIboy996/mkdocs-ai-summary - GitHub](https://gh-card.dev/repos/AIboy996/mkdocs-ai-summary.svg?fullname=)](https://github.com/AIboy996/mkdocs-ai-summary)
+
+Real world demo(my homepage): [yangzhang.site](https://yangzhang.site)
+
+[![AIboy996/AIboy996.github.io - GitHub](https://gh-card.dev/repos/AIboy996/AIboy996.github.io.svg?fullname=)](https://github.com/AIboy996/AIboy996.github.io)
+
+> I wrote these codes for my blog site at first. Now it's open for anyone who may need AI to summarize his words.
 
 ## Installation
 
@@ -45,6 +53,8 @@ pip install mkdocs-ai-summary[tongyi]
     [how to get an DASHSCOPE_API_KEY?](https://dashscope.console.aliyun.com/)
 
 !!! info
+    (this is optional, and iff you are using `mkdocs-material` theme this can work)
+
     Then you can include the [ai-summary.css](./ai-summary.css)(optional, this is for the **custom  ai summary admonition style**) in the config file as below.
 
 ## Configuration
@@ -141,3 +151,9 @@ all config options are available. **Page configuration will override unified con
 Don't worry about duplicate api calls, we've made the cache function so that if you've done an ai-summary before and the content hasn't changed it will use the cache.
 
 Enjoy it.
+
+## SPECIAL THANKS TO
+these awsome projects:
+
+- [mkdocs](https://www.mkdocs.org/)
+- [mkdocs-material](https://squidfunk.github.io/mkdocs-material/)

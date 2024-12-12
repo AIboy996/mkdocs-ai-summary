@@ -232,6 +232,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#demos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Demos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#installation" class="md-nav__link">
     <span class="md-ellipsis">
       Installation
@@ -300,6 +309,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#special-thanks-to" class="md-nav__link">
+    <span class="md-ellipsis">
+      SPECIAL THANKS TO
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -318,15 +336,21 @@
 <h1 id="mkdocs-ai-summary">mkdocs-ai-summary</h1>
 <div class="admonition chatgpt-summary">
 <p class="admonition-title">AI Summary powered by <a href="https://chat.openai.com/">ChatGPT</a></p>
-<p>mkdocs-ai-summary is a plugin that generates an AI summary for a webpage. The plugin can be installed via pip and supports the usage of ChatGPT and Tongyi AI. To utilize these, users are required to set an Environmental Variable for the api key. The plugin also includes optional support for the ai-summary.css for custom AI summary admonition style. Configuration parameters include api, model, ignore_code, cache, cache_dir, and prompt amongst others. The plugin also supports individual page configuration for the AI summary. The cache functionality ensures there are no unnecessary duplicate api calls. If the content hasn't changed since the last summary, the cache will be used. This software can be viewed with a demo on 'aiboy996.github.io/mkdocs-ai-summary' and 'yangzhang.site'.</p>
+<p>Mkdocs-ai-summary is a tool designed for users who need AI to summarize their words. Originally created for a blog site, it is now open to the public. The package is installed with pip, and currently supports only ChatGPT and Tongyi AI. To use these, an environmental variable must be set for the respective api key. Configuration options include api, model, ignore_code, cache, cache_dir, and prompt. Setup guides are provided for both ChatGPT and Tongyi AI summaries. There's also an option to setup ai summary for each page separately. The package comes with a cache function to prevent duplicate api calls. The function checks if the content has been summarized before and, if it hasn't changed, it uses the cache. The creators extend their thanks to projects like mkdocs and mkdocs-material.</p>
 </div>
 <p><a href="https://pypi.org/project/mkdocs-ai-summary/"><img alt="PyPI - Version" src="https://img.shields.io/pypi/v/mkdocs-ai-summary" /></a>
 <img alt="PyPI - Implementation" src="https://img.shields.io/pypi/implementation/mkdocs-ai-summary" />
 <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/mkdocs-ai-summary" /></p>
-<p>Generage an <strong>ai-summary</strong> for the page:
-<img alt="" src="assets/2024-05-23-04-35-01.png" /></p>
-<p>Minimal demo: <a href="https://aiboy996.github.io/mkdocs-ai-summary">aiboy996.github.io/mkdocs-ai-summary</a></p>
-<p>Live demo(my homepage): <a href="https://yangzhang.site">yangzhang.site</a></p>
+<h2 id="demos">Demos</h2>
+<p>Minimal demo(raw mkdocs): <a href="https://aiboy996.github.io/mkdocs-ai-summary-minimal-example/">AIboy996/mkdocs-ai-summary-minimal-example</a></p>
+<p><a href="https://github.com/AIboy996/mkdocs-ai-summary-minimal-example"><img alt="AIboy996/mkdocs-ai-summary-minimal-example - GitHub" src="https://gh-card.dev/repos/AIboy996/mkdocs-ai-summary-minimal-example.svg?fullname=" /></a></p>
+<p>Another demo(mkdocs-material theme): <a href="https://aiboy996.github.io/mkdocs-ai-summary">AIboy996/mkdocs-ai-summary</a></p>
+<p><a href="https://github.com/AIboy996/mkdocs-ai-summary"><img alt="AIboy996/mkdocs-ai-summary - GitHub" src="https://gh-card.dev/repos/AIboy996/mkdocs-ai-summary.svg?fullname=" /></a></p>
+<p>Real world demo(my homepage): <a href="https://yangzhang.site">yangzhang.site</a></p>
+<p><a href="https://github.com/AIboy996/AIboy996.github.io"><img alt="AIboy996/AIboy996.github.io - GitHub" src="https://gh-card.dev/repos/AIboy996/AIboy996.github.io.svg?fullname=" /></a></p>
+<blockquote>
+<p>I wrote these codes for my blog site at first. Now it's open for anyone who may need AI to summarize his words.</p>
+</blockquote>
 <h2 id="installation">Installation</h2>
 <p>You should install the package with pip:
 <div class="highlight"><pre><span></span><code>pip install mkdocs-ai-summary[chatgpt]
@@ -350,6 +374,7 @@ or
 </div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
+<p>(this is optional, and iff you are using <code>mkdocs-material</code> theme this can work)</p>
 <p>Then you can include the <a href="ai-summary.css">ai-summary.css</a>(optional, this is for the <strong>custom  ai summary admonition style</strong>) in the config file as below.</p>
 </div>
 <h2 id="configuration">Configuration</h2>
@@ -467,6 +492,12 @@ hello ai summary.
 <h2 id="about-cache">About Cache</h2>
 <p>Don't worry about duplicate api calls, we've made the cache function so that if you've done an ai-summary before and the content hasn't changed it will use the cache.</p>
 <p>Enjoy it.</p>
+<h2 id="special-thanks-to">SPECIAL THANKS TO</h2>
+<p>these awsome projects:</p>
+<ul>
+<li><a href="https://www.mkdocs.org/">mkdocs</a></li>
+<li><a href="https://squidfunk.github.io/mkdocs-material/">mkdocs-material</a></li>
+</ul>
 
 
 
