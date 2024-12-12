@@ -40,7 +40,7 @@ pip install mkdocs-ai-summary[tongyi]
 >  ```
 > [how to get an DASHSCOPE_API_KEY?](https://dashscope.console.aliyun.com/)
 
-> ![INFO] 
+> ![NOTE] 
 > 
 > Then you can include the [ai-summary.css](./docs/ai-summary.css)(optional, this is for the **custom  ai summary admonition style**) in the config file as below.
 
