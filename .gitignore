@@ -2,3 +2,6 @@ __pycache__
 *.egg-info
 *.json
 dist
+build
+!_ai_summary_cache_chatgpt.json
+!_ai_summary_cache_tongyi.json

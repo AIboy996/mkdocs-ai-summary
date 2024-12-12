@@ -9,6 +9,8 @@ from mkdocs.structure.pages import Page
 import re
 import logging
 
+from .tongyi_api import AiSummaryError
+
 logger = logging.getLogger("mkdocs.plugins.ai-summary")
 
 
@@ -57,14 +59,14 @@ class AiSummaryPlugin(BasePlugin):
         match api:
             case "tongyi":
                 try:
-                    from .tongyi_api import get_summary_tongyi, AiSummaryError
+                    from .tongyi_api import get_summary
                 except ImportError as e:
                     logger.warning("tongyi is not available", repr(e))
                     return markdown
 
-                logger.info(f"Asking AI summary for page {page.title}({page.url})")
+                logger.info(f"Asking AI summary for page [{page.title}]({page.url})")
                 try:
-                    summary = get_summary_tongyi(
+                    summary = get_summary(
                         page=str(page.title),
                         prompt=prompt,
                         markdown=markdown_to_summary,
@@ -81,14 +83,14 @@ class AiSummaryPlugin(BasePlugin):
                     return markdown
             case "chatgpt":
                 try:
-                    from .chatgpt_api import get_summary_chatgpt
+                    from .chatgpt_api import get_summary
                 except ImportError as e:
                     logger.warning("chatgpt is not available", repr(e))
                     return markdown
 
-                logger.info(f"Asking AI summary for page {page.title}({page.url})")
+                logger.info(f"Asking AI summary for page [{page.title}]({page.url})")
                 try:
-                    summary = get_summary_chatgpt(
+                    summary = get_summary(
                         page=str(page.title),
                         prompt=prompt,
                         markdown=markdown_to_summary,

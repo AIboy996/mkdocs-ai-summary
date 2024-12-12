@@ -5,9 +5,9 @@ include:
 - ai-summary
 ---
 
-# 内置关键字(with h1, ChatGPT summary)
+# Example 1(ChatGPT summary with h1)
 
-> copy from <https://yangzhang.site/Python/BasicSyntax/builtin_keyword/>
+> copy from <https://yangzhang.site/Python/BasicSyntax/builtin_keyword/>, please check raw `.md` file.
 
 到目前为止，我们所学的内容都是**一句话**可以解决的。不论是函数调用，还是变量赋值抑或是创建对象。
 

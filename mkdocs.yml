@@ -5,13 +5,16 @@ theme:
 plugins:
   - ai-summary:
       api: "chatgpt"
-      model: "gpt-4o"
+      model: "gpt-4"
       ignore_code: true
       cache: true
       cache_dir: "./"
-      prompt: "Please help me summarize the following content into an abstract within 200 words in source language. Must within 200 words. Do not use linebreak.: "
+      prompt: "Please help me summarize the following content into an abstract within 150 words in source language. Must within 200 words. Do not use linebreak.: "
   - tags
-
+nav:
+  - withh1.md
+  - withouth1.md
+  - translate.md
 markdown_extensions:
   - admonition
   - pymdownx.details

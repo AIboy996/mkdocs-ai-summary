@@ -26,7 +26,7 @@ or
 ```
 pip install mkdocs-ai-summary[tongyi]
 ```
-> ⚠️⚠️⚠️⚠️
+> [!WARNING]
 > 
 > Only support [ChatGPT](https://chat.openai.com/) and [tongyi ai](https://tongyi.aliyun.com/) for now.
 >  

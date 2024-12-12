@@ -1,12 +1,9 @@
-import os
-import json
-import random
 from hashlib import md5
 from http import HTTPStatus
 from dashscope import Generation
 import logging
 
-from .chatgpt_api import get_cache_dict, ask_with_cache
+from .cache import with_cache, load_cache, save_cache
 
 MAX_LENGTH = 6000
 
@@ -19,13 +16,15 @@ class AiSummaryError(Exception):
 
 def ask(prompt, model="qwen-turbo"):
     messages = [
-        {"role": "system", "content": "You are a helpful assistant."},
+        {
+            "role": "system",
+            "content": "You are a personal assistant, skilled in summarizing.",
+        },
         {"role": "user", "content": prompt},
     ]
     response = Generation.call(
         model=model,
         messages=messages,
-        seed=random.randint(1, 10000),
         result_format="text",
     )
     if response.status_code == HTTPStatus.OK:
@@ -42,7 +41,7 @@ def ask(prompt, model="qwen-turbo"):
         )
 
 
-def get_summary_tongyi(
+def get_summary(
     page,
     prompt,
     markdown,
@@ -50,18 +49,18 @@ def get_summary_tongyi(
     cache_dir="./",
     model="qwen-turbo",
     logger=logging.Logger(""),
+    cache_suffix="_ai_summary_cache_tongyi.json",
 ):
-    question = (prompt + markdown)[: MAX_LENGTH - 10]
+    question = prompt + ":\n\n" + markdown
     if cache:
         content_md5 = md5(markdown.encode("utf-8")).hexdigest()
-        cache_dict = get_cache_dict(cache_dir, file_suffix="_ai_summary_cache1.json")
-        ai_summary = ask_with_cache(
-            question, page, content_md5, model, cache_dict, logger
+        cache_dict = load_cache(cache_dir, cache_suffix)
+        ai_summary = with_cache(ask, cache_dict, model, logger)(
+            page, question[: MAX_LENGTH - 10], content_md5  # ask question with cache
         )
-        # always refresh the cache
         cache_dict[page] = {"content_md5": content_md5, "ai_summary": ai_summary}
-        with open(f"{cache_dir}/_ai_summary_cache2.json", "w+") as f:
-            cache_dict = json.dump(cache_dict, f, indent=4)
+        # always refresh the cache
+        save_cache(cache_dict, cache_dir, file_suffix=cache_suffix)
     else:
         ai_summary = ask(question, model=model)
     removed_line_break = ai_summary.replace(r"\n", "")
