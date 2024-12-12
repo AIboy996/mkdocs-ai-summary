@@ -16,12 +16,15 @@ Live demo(my homepage): [yangzhang.site](https://yangzhang.site)
 You should install the package with pip:
 ```
 pip install mkdocs-ai-summary[chatgpt]
+# this will install `openai` additionally
 ```
 or
 ```
 pip install mkdocs-ai-summary[tongyi]
+# this will install `dashscope` additionally
 ```
-> ⚠️⚠️⚠️⚠️
+
+> [!WARNING]
 > 
 > Only support [ChatGPT](https://chat.openai.com/) and [tongyi ai](https://tongyi.aliyun.com/) for now.
 >  
@@ -37,7 +40,9 @@ pip install mkdocs-ai-summary[tongyi]
 >  ```
 > [how to get an DASHSCOPE_API_KEY?](https://dashscope.console.aliyun.com/)
 
-[optional] Then you can include the [ai-summary.css](./docs/ai-summary.css)(optional, this is for the **custom  ai summary admonition style**) in the config file as below:
+> ![INFO] 
+> 
+> Then you can include the [ai-summary.css](./docs/ai-summary.css)(optional, this is for the **custom  ai summary admonition style**) in the config file as below.
 
 ## Configuration
 

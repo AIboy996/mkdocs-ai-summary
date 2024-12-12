@@ -318,7 +318,7 @@
 <h1 id="mkdocs-ai-summary">mkdocs-ai-summary</h1>
 <div class="admonition chatgpt-summary">
 <p class="admonition-title">AI Summary powered by <a href="https://chat.openai.com/">ChatGPT</a></p>
-<p>Mkdocs-ai-summary is a package that allows users to generate AI-powered summaries for their pages. It is compatible with various technologies such as ChatGPT and tongyi ai. To enjoy this functionality, users are required to install the package with pip, and set an Environmental Variable for the appropriate API key for either ChatGPT (default) or tongyi ai. The package also allows customization through different configuration settings like API choice, model selection, ignoring code blocks in markdown, caching, cache directory and prompts. Furthermore, users can set up an AI summary for each page separately, with the page configuration overriding the unified settings. An additional feature is the cache functionality, designed to avoid redundant API calls and employ the cache when the content remains unaltered after an AI summary is made. Enjoy its benefits by integrating mkdocs-ai-summary into your pages.</p>
+<p>mkdocs-ai-summary is a plugin that generates an AI summary for a webpage. The plugin can be installed via pip and supports the usage of ChatGPT and Tongyi AI. To utilize these, users are required to set an Environmental Variable for the api key. The plugin also includes optional support for the ai-summary.css for custom AI summary admonition style. Configuration parameters include api, model, ignore_code, cache, cache_dir, and prompt amongst others. The plugin also supports individual page configuration for the AI summary. The cache functionality ensures there are no unnecessary duplicate api calls. If the content hasn't changed since the last summary, the cache will be used. This software can be viewed with a demo on 'aiboy996.github.io/mkdocs-ai-summary' and 'yangzhang.site'.</p>
 </div>
 <p><a href="https://pypi.org/project/mkdocs-ai-summary/"><img alt="PyPI - Version" src="https://img.shields.io/pypi/v/mkdocs-ai-summary" /></a>
 <img alt="PyPI - Implementation" src="https://img.shields.io/pypi/implementation/mkdocs-ai-summary" />
@@ -330,12 +330,14 @@
 <h2 id="installation">Installation</h2>
 <p>You should install the package with pip:
 <div class="highlight"><pre><span></span><code>pip install mkdocs-ai-summary[chatgpt]
+# this will install `openai` additionally
 </code></pre></div>
 or
 <div class="highlight"><pre><span></span><code>pip install mkdocs-ai-summary[tongyi]
+# this will install `dashscope` additionally
 </code></pre></div></p>
-<blockquote>
-<p>[!WARNING]</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
 <p>Only support <a href="https://chat.openai.com/">ChatGPT</a> and <a href="https://tongyi.aliyun.com/">tongyi ai</a> for now.</p>
 <p>To use <strong>ChatGPT(default)</strong>, you should set a Environmental Variable for <strong>api key</strong>:
  <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">OPENAI_API_KEY</span><span class="o">=</span><span class="s1">&#39;sk-xxxxxxx&#39;</span>
@@ -345,8 +347,11 @@ or
  <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">DASHSCOPE_API_KEY</span><span class="o">=</span><span class="s1">&#39;sk-xxxxxxx&#39;</span>
 </code></pre></div>
 <a href="https://dashscope.console.aliyun.com/">how to get an DASHSCOPE_API_KEY?</a></p>
-</blockquote>
-<p>[optional] Then you can include the <a href="ai-summary.css">ai-summary.css</a>(optional, this is for the <strong>custom  ai summary admonition style</strong>) in the config file as below:</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Then you can include the <a href="ai-summary.css">ai-summary.css</a>(optional, this is for the <strong>custom  ai summary admonition style</strong>) in the config file as below.</p>
+</div>
 <h2 id="configuration">Configuration</h2>
 <h3 id="options-can-be-set">Options can be set</h3>
 <table>
