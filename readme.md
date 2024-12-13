@@ -4,7 +4,7 @@
 ![PyPI - Implementation](https://img.shields.io/pypi/implementation/mkdocs-ai-summary)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mkdocs-ai-summary)
 
-Generage an **ai-summary** for the page:
+Generage an **ai-summary** and insert into page content:
 ![](assets/2024-05-23-04-35-01.png)
 
 ## Demos
