@@ -48,7 +48,7 @@ pip install mkdocs-ai-summary[tongyi]
 
 > [!TIP] 
 > 
-> Furthermore you can include the [ai-summary.css](./docs/ai-summary.css) in the config file as below.
+> Furthermore you can include the [ai-summary.css](./docs/ai-summary.css) as `extra_css` in the config file.
 > 
 > This is optional, and iff you are using `mkdocs-material` theme this can work.
 
