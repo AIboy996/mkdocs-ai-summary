@@ -48,9 +48,9 @@ pip install mkdocs-ai-summary[tongyi]
 
 > [!TIP] 
 > 
-> (this is optional, and iff you are using `mkdocs-material` theme this can work)
+> Furthermore you can include the [ai-summary.css](./docs/ai-summary.css) in the config file as below.
 > 
-> Furthermore you can include the [ai-summary.css](./docs/ai-summary.css)(optional, this is for the **custom  ai summary admonition style**) in the config file as below.
+> This is optional, and iff you are using `mkdocs-material` theme this can work.
 
 ## Configuration
 
@@ -76,13 +76,8 @@ theme:
   name: material
 
 plugins:
-  - ai-summary:
-      api: "chatgpt"
-      model: "gpt-3.5-turbo"
-      ignore_code: true 
-      cache: true
-      cache_dir: "./"
-      prompt: "Please help me summarize the following content into an abstract within 200 words: "
+  # use default config
+  - ai-summary
   - tags
 
 markdown_extensions:
@@ -148,7 +143,6 @@ Don't worry about duplicate api calls, we've made the cache function so that if 
 Enjoy it.
 
 ## SPECIAL THANKS TO
-these awsome projects:
 
 - [mkdocs](https://www.mkdocs.org/)
 - [mkdocs-material](https://squidfunk.github.io/mkdocs-material/)
