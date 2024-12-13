@@ -7,7 +7,7 @@
 Generage an **ai-summary** and insert into page content:
 ![](assets/2024-05-23-04-35-01.png)
 
-## Demos
+## Live Demo
 
 Minimal demo(raw mkdocs): [AIboy996/mkdocs-ai-summary-minimal-example](https://aiboy996.github.io/mkdocs-ai-summary-minimal-example/)
 
@@ -54,7 +54,7 @@ pip install mkdocs-ai-summary[tongyi]
 
 ## Configuration
 
-### Options can be set
+All parameters:
 
 name|type|default value| note
 --|--|--|--
@@ -66,7 +66,7 @@ cache_dir|str|"./"| -
 prompt|str|"Please help me summarize the following content into an abstract within 200 words: "| -
 
 
-### For ChatGPT Summary
+### Example Configuration For ChatGPT Summary
 
 Setup `mkdocs.yml` like this:
 
@@ -102,7 +102,7 @@ include:
 hello ai summary.
 ```
 
-### For tongyi ai Summary
+### Example Configuration For tongyi ai Summary
 or you can use **tongyi ai** by setting:
 ```yml
 plugins:
@@ -126,7 +126,7 @@ include:
 ai-summary-config:
     api: "tongyi"
     model: "qwen-turbo"
-    prompt: "帮我把下面的内容总结为200字以内的摘要："
+    prompt: "Say anything, 200 words."
 ---
 
 # title
