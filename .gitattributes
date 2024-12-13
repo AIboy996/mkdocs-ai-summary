@@ -1,2 +1,3 @@
 # exclude from statistics
 site/* linguist-vendored
+docs/* linguist-vendored
