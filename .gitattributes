@@ -1,3 +1,6 @@
 # exclude from statistics
 site/* linguist-vendored
 docs/* linguist-vendored
+*.js linguist-detectable=false
+*.html linguist-detectable=false
+*.css linguist-detectable=false
