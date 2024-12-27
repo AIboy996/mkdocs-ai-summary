@@ -1,4 +1,3 @@
-import json
 import logging
 from hashlib import md5
 from openai import OpenAI

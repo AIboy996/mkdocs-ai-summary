@@ -9,7 +9,6 @@ from mkdocs.structure.pages import Page
 import re
 import logging
 
-from .tongyi_api import AiSummaryError
 
 logger = logging.getLogger("mkdocs.plugins.ai-summary")
 
@@ -59,7 +58,7 @@ class AiSummaryPlugin(BasePlugin):
         match api:
             case "tongyi":
                 try:
-                    from .tongyi_api import get_summary
+                    from .tongyi_api import get_summary, AiSummaryRequestError
                 except ImportError as e:
                     logger.warning("tongyi is not available", repr(e))
                     return markdown
@@ -75,8 +74,8 @@ class AiSummaryPlugin(BasePlugin):
                         model=model,
                         logger=logger,
                     )
-                except AiSummaryError as e:
-                    logger.warning("Ask AI Error", repr(e))
+                except AiSummaryRequestError as e:
+                    logger.warning("Request Tongyi AI Error", repr(e))
                     return markdown
                 except Exception as e:
                     logger.warning(repr(e))

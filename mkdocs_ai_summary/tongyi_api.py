@@ -1,14 +1,14 @@
+import logging
 from hashlib import md5
 from http import HTTPStatus
 from dashscope import Generation
-import logging
 
 from .cache import with_cache, load_cache, save_cache
 
 MAX_LENGTH = 6000
 
 
-class AiSummaryError(Exception):
+class AiSummaryRequestError(Exception):
 
     def __init__(self, *args: object) -> None:
         super().__init__(*args)
@@ -30,7 +30,7 @@ def ask(prompt, model="qwen-turbo"):
     if response.status_code == HTTPStatus.OK:
         return response["output"]["text"]
     else:
-        raise AiSummaryError(
+        raise AiSummaryRequestError(
             "Request id: %s, Status code: %s, error code: %s, error message: %s"
             % (
                 response.request_id,
