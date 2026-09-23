@@ -156,7 +156,7 @@
         
   
   <span class="md-ellipsis">
-    Example 1(ChatGPT summary with h1)
+    Example 1(summary with h1)
   </span>
   
 
@@ -176,7 +176,7 @@
         
   
   <span class="md-ellipsis">
-    Example 2(ChatGPT summary without h1)
+    Example 2(summary without h1)
   </span>
   
 
@@ -196,7 +196,7 @@
         
   
   <span class="md-ellipsis">
-    Example 3(tarnslated by ChatGPT summary)
+    Example 3(tarnslated by mkdocs-ai-summary)
   </span>
   
 
@@ -260,36 +260,27 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#options-can-be-set" class="md-nav__link">
+  <a href="#chatgpt-summary" class="md-nav__link">
     <span class="md-ellipsis">
-      Options can be set
+      ChatGPT summary
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#for-chatgpt-summary" class="md-nav__link">
+  <a href="#tongyi-qianwen-summary" class="md-nav__link">
     <span class="md-ellipsis">
-      For ChatGPT Summary
+      Tongyi Qianwen summary
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#for-tongyi-ai-summary" class="md-nav__link">
+  <a href="#set-up-ai-summary-for-a-specific-page" class="md-nav__link">
     <span class="md-ellipsis">
-      For tongyi ai Summary
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#setup-ai-summary-for-specific-page" class="md-nav__link">
-    <span class="md-ellipsis">
-      Setup ai-summary for specific page
+      Set up ai-summary for a specific page
     </span>
   </a>
   
@@ -334,9 +325,9 @@
 
 
 <h1 id="mkdocs-ai-summary">mkdocs-ai-summary</h1>
-<div class="admonition chatgpt-summary">
-<p class="admonition-title">AI Summary powered by <a href="https://chat.openai.com/">ChatGPT</a></p>
-<p>Mkdocs-ai-summary is a tool designed for users who need AI to summarize their words. Originally created for a blog site, it is now open to the public. The package is installed with pip, and currently supports only ChatGPT and Tongyi AI. To use these, an environmental variable must be set for the respective api key. Configuration options include api, model, ignore_code, cache, cache_dir, and prompt. Setup guides are provided for both ChatGPT and Tongyi AI summaries. There's also an option to setup ai summary for each page separately. The package comes with a cache function to prevent duplicate api calls. The function checks if the content has been summarized before and, if it hasn't changed, it uses the cache. The creators extend their thanks to projects like mkdocs and mkdocs-material.</p>
+<div class="admonition deepseek-summary">
+<p class="admonition-title">AI Summary powered by <a href="https://www.deepseek.com/">DeepSeek</a></p>
+<p>mkdocs-ai-summary is an MkDocs plugin that generates AI-powered summaries for documentation pages. It offers minimal, mkdocs-material, and real-world demos, and was initially built for a personal blog. Install via pip, then configure mkdocs.yml to use ChatGPT, DeepSeek, or Tongyi Qianwen; ChatGPT and DeepSeek use OpenAI-compatible APIs, while Tongyi uses DashScope, requiring the relevant API key. Optional ai-summary.css supports custom admonition styling with mkdocs-material. Summaries can be set globally or per page via meta tags, with page configuration overriding global settings. Cache entries are keyed by page title and the MD5 of Markdown after ignore_code processing, and prompt/model/endpoint/config changes do not invalidate them. Full details appear in the Chinese and English READMEs.</p>
 </div>
 <p><a href="https://pypi.org/project/mkdocs-ai-summary/"><img alt="PyPI - Version" src="https://img.shields.io/pypi/v/mkdocs-ai-summary" /></a>
 <img alt="PyPI - Implementation" src="https://img.shields.io/pypi/implementation/mkdocs-ai-summary" />
@@ -359,10 +350,14 @@
 or
 <div class="highlight"><pre><span></span><code>pip install mkdocs-ai-summary[tongyi]
 # this will install `dashscope` additionally
+</code></pre></div>
+or
+<div class="highlight"><pre><span></span><code>pip install mkdocs-ai-summary[deepseek]
+# this will install `openai` additionally
 </code></pre></div></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Only support <a href="https://chat.openai.com/">ChatGPT</a> and <a href="https://tongyi.aliyun.com/">tongyi ai</a> for now.</p>
+<p>Supported providers are <a href="https://chatgpt.com/">ChatGPT</a>, <a href="https://www.deepseek.com/">DeepSeek</a>, and <a href="https://tongyi.aliyun.com/">Tongyi Qianwen</a>. ChatGPT and DeepSeek use OpenAI-compatible APIs; Tongyi uses DashScope.</p>
 <p>To use <strong>ChatGPT(default)</strong>, you should set a Environmental Variable for <strong>api key</strong>:
  <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">OPENAI_API_KEY</span><span class="o">=</span><span class="s1">&#39;sk-xxxxxxx&#39;</span>
 </code></pre></div>
@@ -371,6 +366,9 @@ or
  <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">DASHSCOPE_API_KEY</span><span class="o">=</span><span class="s1">&#39;sk-xxxxxxx&#39;</span>
 </code></pre></div>
 <a href="https://dashscope.console.aliyun.com/">how to get an DASHSCOPE_API_KEY?</a></p>
+<p>To use <strong>DeepSeek</strong>, set <code>DEEPSEEK_API_KEY</code>:
+ <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">DEEPSEEK_API_KEY</span><span class="o">=</span><span class="s1">&#39;sk-xxxxxxx&#39;</span>
+</code></pre></div></p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -378,56 +376,8 @@ or
 <p>Then you can include the <a href="ai-summary.css">ai-summary.css</a>(optional, this is for the <strong>custom  ai summary admonition style</strong>) in the config file as below.</p>
 </div>
 <h2 id="configuration">Configuration</h2>
-<h3 id="options-can-be-set">Options can be set</h3>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>type</th>
-<th>default value</th>
-<th>note</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>api</td>
-<td>str</td>
-<td>chatgpt</td>
-<td>only support chatgpt or tongyi</td>
-</tr>
-<tr>
-<td>model</td>
-<td>str</td>
-<td>gpt-3.5-turbo</td>
-<td>-</td>
-</tr>
-<tr>
-<td>ignore_code</td>
-<td>bool</td>
-<td>true</td>
-<td>ignore code block in markdown</td>
-</tr>
-<tr>
-<td>cache</td>
-<td>bool</td>
-<td>true</td>
-<td>-</td>
-</tr>
-<tr>
-<td>cache_dir</td>
-<td>str</td>
-<td>"./"</td>
-<td>-</td>
-</tr>
-<tr>
-<td>prompt</td>
-<td>str</td>
-<td>"Please help me summarize the following content into an abstract within 200 words: "</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<h3 id="for-chatgpt-summary">For ChatGPT Summary</h3>
+<p>For the full configuration reference, provider defaults, page-level overrides, and cache behavior, see the <a href="https://github.com/AIboy996/mkdocs-ai-summary/blob/main/readme.md">中文主 README</a> or <a href="https://github.com/AIboy996/mkdocs-ai-summary/blob/main/README_EN.md">English README</a>. The <code>api</code> option accepts <code>chatgpt</code>, <code>deepseek</code>, or <code>tongyi</code>.</p>
+<h3 id="chatgpt-summary">ChatGPT summary</h3>
 <p>Setup <code>mkdocs.yml</code> like this:</p>
 <div class="highlight"><pre><span></span><code>site_name: mkdocs-ai-summary
 theme:
@@ -462,7 +412,7 @@ include:
 
 hello ai summary.
 </code></pre></div></p>
-<h3 id="for-tongyi-ai-summary">For tongyi ai Summary</h3>
+<h3 id="tongyi-qianwen-summary">Tongyi Qianwen summary</h3>
 <p>or you can use <strong>tongyi ai</strong> by setting:
 <div class="highlight"><pre><span></span><code>plugins:
   - ai-summary:
@@ -473,7 +423,7 @@ hello ai summary.
       cache_dir: &quot;./&quot;
       prompt: &quot;Please help me summarize the following content into an abstract within 200 words: &quot;
 </code></pre></div></p>
-<h3 id="setup-ai-summary-for-specific-page">Setup ai-summary for specific page</h3>
+<h3 id="set-up-ai-summary-for-a-specific-page">Set up ai-summary for a specific page</h3>
 <p>You can also setup ai summary for each page separately:</p>
 <div class="highlight"><pre><span></span><code>---
 include:
@@ -490,7 +440,7 @@ hello ai summary.
 </code></pre></div>
 <p>all config options are available. <strong>Page configuration will override unified configuration.</strong></p>
 <h2 id="about-cache">About Cache</h2>
-<p>Don't worry about duplicate api calls, we've made the cache function so that if you've done an ai-summary before and the content hasn't changed it will use the cache.</p>
+<p>Cache entries are keyed by page title and the MD5 of the Markdown body after <code>ignore_code</code> processing. Prompt, model, endpoint, and other configuration changes do not invalidate a cache entry. See the README for details and cache file locations.</p>
 <p>Enjoy it.</p>
 <h2 id="special-thanks-to">SPECIAL THANKS TO</h2>
 <p>these awsome projects:</p>

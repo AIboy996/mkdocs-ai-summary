@@ -4,9 +4,7 @@ theme:
 
 plugins:
   - ai-summary:
-      api: "chatgpt"
-      model: "gpt-4"
-      ignore_code: true
+      api: "deepseek"
       cache: true
       cache_dir: "./"
       prompt: "Please help me summarize the following content into an abstract within 150 words in source language. Must within 200 words. Do not use linebreak.: "

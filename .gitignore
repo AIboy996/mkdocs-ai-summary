@@ -3,6 +3,13 @@ __pycache__
 *.json
 dist
 test
+!test/
+test/*
+!test/test_plugin_config.py
+!test/mkdocs-ai-summary-test.yml
+!test/demo_markdown/
+test/demo_markdown/*
+!test/demo_markdown/*.md
 build
 !_ai_summary_cache_chatgpt.json
 !_ai_summary_cache_tongyi.json

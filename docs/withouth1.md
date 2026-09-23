@@ -1,7 +1,7 @@
 ---
 tags:
 - PyIntro
-title: Example 2(ChatGPT summary without h1)
+title: Example 2(summary without h1)
 include:
 - ai-summary
 ai-summary-config:

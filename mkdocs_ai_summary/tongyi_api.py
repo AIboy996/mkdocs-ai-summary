@@ -50,13 +50,18 @@ def get_summary(
     model="qwen-turbo",
     logger=logging.Logger(""),
     cache_suffix="_ai_summary_cache_tongyi.json",
+    provider_name="tongyiai",
+    provider_title="通义千问",
+    provider_link="https://tongyi.aliyun.com/",
 ):
-    question = prompt + ":\n\n" + markdown
+    separator = "" if prompt.rstrip().endswith(":") else ":"
+    question = prompt + separator + "\n\n" + markdown
+    question = question[: MAX_LENGTH - 10]
     if cache:
         content_md5 = md5(markdown.encode("utf-8")).hexdigest()
         cache_dict = load_cache(cache_dir, cache_suffix)
         ai_summary = with_cache(ask, cache_dict, model, logger)(
-            page, question[: MAX_LENGTH - 10], content_md5  # ask question with cache
+            page, question, content_md5
         )
         cache_dict[page] = {"content_md5": content_md5, "ai_summary": ai_summary}
         # always refresh the cache
@@ -64,6 +69,6 @@ def get_summary(
     else:
         ai_summary = ask(question, model=model)
     removed_line_break = ai_summary.replace(r"\n", "")
-    return f"""!!! tongyiai-summary "AI Summary powered by [通义千问](https://tongyi.aliyun.com/)"
+    return f"""!!! {provider_name}-summary "AI Summary powered by [{provider_title}]({provider_link})"
     {removed_line_break}
 """

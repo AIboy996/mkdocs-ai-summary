@@ -1,0 +1,13 @@
+site_name: ai-summary-config-test
+docs_dir: demo_markdown
+site_dir: .test-build
+
+plugins:
+  - ai-summary:
+      api: chatgpt
+      ignore_code: true
+      cache: false
+      cache_dir: .test-cache
+
+markdown_extensions:
+  - admonition

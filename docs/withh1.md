@@ -5,7 +5,7 @@ include:
 - ai-summary
 ---
 
-# Example 1(ChatGPT summary with h1)
+# Example 1(summary with h1)
 
 > copy from <https://yangzhang.site/Python/BasicSyntax/builtin_keyword/>, please check raw `.md` file.
 

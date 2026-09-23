@@ -7,7 +7,7 @@ ai-summary-config:
     prompt: "Help me translate the content into English. Please keep all the markdown markers and delete all the words before [[START]]."
 ---
 
-# Example 3(tarnslated by ChatGPT summary)
+# Example 3(tarnslated by mkdocs-ai-summary)
 
 > copy from <https://yangzhang.site/Python/BasicSyntax/builtin_keyword/>, please check raw `.md` file.
 

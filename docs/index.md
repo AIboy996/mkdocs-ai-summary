@@ -36,9 +36,14 @@ or
 pip install mkdocs-ai-summary[tongyi]
 # this will install `dashscope` additionally
 ```
+or
+```
+pip install mkdocs-ai-summary[deepseek]
+# this will install `openai` additionally
+```
 
 !!! warning
-    Only support [ChatGPT](https://chat.openai.com/) and [tongyi ai](https://tongyi.aliyun.com/) for now.
+    Supported providers are [ChatGPT](https://chatgpt.com/), [DeepSeek](https://www.deepseek.com/), and [Tongyi Qianwen](https://tongyi.aliyun.com/). ChatGPT and DeepSeek use OpenAI-compatible APIs; Tongyi uses DashScope.
 
      To use **ChatGPT(default)**, you should set a Environmental Variable for **api key**:
      ```bash
@@ -52,6 +57,11 @@ pip install mkdocs-ai-summary[tongyi]
      ```
     [how to get an DASHSCOPE_API_KEY?](https://dashscope.console.aliyun.com/)
 
+     To use **DeepSeek**, set `DEEPSEEK_API_KEY`:
+     ```bash
+     export DEEPSEEK_API_KEY='sk-xxxxxxx'
+     ```
+
 !!! info
     (this is optional, and iff you are using `mkdocs-material` theme this can work)
 
@@ -59,19 +69,10 @@ pip install mkdocs-ai-summary[tongyi]
 
 ## Configuration
 
-### Options can be set
-
-name|type|default value| note
---|--|--|--
-api|str|chatgpt| only support chatgpt or tongyi
-model|str|gpt-3.5-turbo | -
-ignore_code|bool|true| ignore code block in markdown
-cache|bool|true| -
-cache_dir|str|"./"| -
-prompt|str|"Please help me summarize the following content into an abstract within 200 words: "| -
+For the full configuration reference, provider defaults, page-level overrides, and cache behavior, see the [中文主 README](https://github.com/AIboy996/mkdocs-ai-summary/blob/main/readme.md) or [English README](https://github.com/AIboy996/mkdocs-ai-summary/blob/main/README_EN.md). The `api` option accepts `chatgpt`, `deepseek`, or `tongyi`.
 
 
-### For ChatGPT Summary
+### ChatGPT summary
 
 Setup `mkdocs.yml` like this:
 
@@ -112,7 +113,7 @@ include:
 hello ai summary.
 ```
 
-### For tongyi ai Summary
+### Tongyi Qianwen summary
 or you can use **tongyi ai** by setting:
 ```yml
 plugins:
@@ -125,7 +126,7 @@ plugins:
       prompt: "Please help me summarize the following content into an abstract within 200 words: "
 ```
 
-### Setup ai-summary for specific page
+### Set up ai-summary for a specific page
 
 You can also setup ai summary for each page separately:
 
@@ -148,7 +149,7 @@ all config options are available. **Page configuration will override unified con
 
 ## About Cache
 
-Don't worry about duplicate api calls, we've made the cache function so that if you've done an ai-summary before and the content hasn't changed it will use the cache.
+Cache entries are keyed by page title and the MD5 of the Markdown body after `ignore_code` processing. Prompt, model, endpoint, and other configuration changes do not invalidate a cache entry. See the README for details and cache file locations.
 
 Enjoy it.
 
